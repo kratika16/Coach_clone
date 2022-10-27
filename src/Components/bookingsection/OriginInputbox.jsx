@@ -28,7 +28,7 @@ const OriginInputbox = () => {
   const styles = useMemo(() => ({
     control: (style, { isDisabled }) => ({
       ...style,
-      minHeight: "4rem",
+      minHeight: "2rem",
       backgroundColor: isDisabled ? "#F5F5F5" : "hsl(0 0% 100%)",
       borderColor: " hsl(0 0% 100%)",
       boxShadow: "none",
@@ -36,6 +36,8 @@ const OriginInputbox = () => {
         ...style[":hover"],
         backgroundColor: "hsl(0 0% 100%)",
         borderColor: "hsl(0 0% 100%)",
+        
+        
       },
       
     }),
@@ -45,33 +47,25 @@ const OriginInputbox = () => {
       top: "50%",
       marginLeft: 1,
       color: "#666666",
-      paddingTop: 30,
+      paddingTop: 5,
       fontWeight: 500,
       width: 300,
-      
       
     }),
 
     input: (style) => ({
       ...style,
       paddingBottom: 0,
-      paddingTop: 30,
+      paddingTop: 5,
       paddingLeft: 5,
+      
       ":active": {
         ...style[":active"],
         backgroundColor: "hsl(0 0% 100%)",
         borderColor: "hsl(0 0% 100%)",
       },
     }),
-    menu: (style) => ({
-      ...style,
-      padding: 4,
-      paddingBottom: 2,
-      zIndex: 1000,
-      marginTop: 4,
-      boxShadow: "0 0 8px 3px rgba(0,0,0,0.09)",
-     
-    }),
+    
     option: (style, { isSelected }) => ({
       ...style,
       backgroundColor: isSelected ? "#E9F5FE" : null,
@@ -94,7 +88,8 @@ const OriginInputbox = () => {
     }),
   }));
   return (
-    <div className="relative md:mr-4 mb-4 md:mb-0 md:w-[100%] react-select">
+    <div className=" md:w-[97%] rounded bg-white z-0">
+      <div className="text-lg text-boxblue font-bold pl-2 pt-2 ">Origin</div>
       <Select
         placeholder="Type stop name/city or airport name"
         styles={styles}

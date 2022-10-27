@@ -1,31 +1,31 @@
 import React from "react";
-import Newwark from "../../assets/images/bus3.png";
-import Chicago from "../../assets/images/bus1.png";
-import Mitchell from "../../assets/images/bus4.png";
-import Toronto from "../../assets/images/bus2.png";
+import Newwark from "../../assets/images/png/bus3.png";
+import Chicago from "../../assets/images/png/bus1.png";
+import Mitchell from "../../assets/images/png/bus4.png";
+import Toronto from "../../assets/images/png/bus2.png";
 import {IoIosArrowForward} from "react-icons/io"
 
 function airportTransport() {
   return (
     <>
-      <div className="airport-transport mt-0 relative md:pt-16 mx-md:pt-12 pb-4 WCC:hidden bg-[#0062a9] h-80 md:mb-52">
-        <div className="container mx-auto relative z-10 ">
+      <div className=" mt-0  md:pt-16 mx-md:pt-12 pb-5  bg-boxblue h-80 md:mb-64">
+        <div className="container   px-4">
           <div className="flex justify-center text-center mb-10">
             <div className="md:w-3/6">
               <h4 className="text-2xl font-bold mb-2 text-white">
                 Airport Transportation
               </h4>
-              <div className="text-[17px] text-white">
-                Never miss your flight when you travel with our airport transportation 
-              services. Our airport shuttles run daily, set schedule, to ensure a timely 
-                                   departure and arrival.
+              <div className="text-17 text-white">
+                Never miss your flight when you travel with our airport
+                transportation services. Our airport shuttles run daily, on a
+                set schedule, to ensure a timely departure and arrival.
               </div>
             </div>
           </div>
 
-          <div className="flex flex-nowrap w-full mx-auto overflow-x-auto">
-            <div className="px-2 md:w-[285px]">
-              <div className="shadow-xl rounded-lg bg-white overflow-hidden border-2 border-white mb-6">
+          <div className="flex flex-nowrap w-full mx-4 overflow-x-auto md:px-8 mx-md:pb-32">
+            <div className="px-2 md:w-285 ">
+              <div className="shadow-xl rounded-lg bg-white overflow-hidden border-2 border-white mb-6  ">
                 <img
                   alt="Newwark Express Bus"
                   src={Newwark}
@@ -45,7 +45,7 @@ function airportTransport() {
               </div>
             </div>
 
-            <div className="px-2 md:w-[285px]">
+            <div className="px-2 md:w-285">
               <div className="shadow-xl rounded-lg bg-white overflow-hidden border-2 border-white mb-6">
                 <img
                   alt="Newwark Express Bus"
@@ -66,7 +66,7 @@ function airportTransport() {
               </div>
             </div>
 
-            <div className="px-2 md:w-[285px]">
+            <div className="px-2 md:w-285">
               <div className="shadow-xl rounded-lg bg-white overflow-hidden border-2 border-white mb-6">
                 <img
                   alt="Newwark Express Bus"
@@ -87,7 +87,7 @@ function airportTransport() {
               </div>
             </div>
 
-            <div className="px-2 md:w-[285px]">
+            <div className="px-2 md:w-285">
               <div className="shadow-xl rounded-lg bg-white overflow-hidden border-2 border-white mb-6">
                 <img
                   alt="Newwark Express Bus"

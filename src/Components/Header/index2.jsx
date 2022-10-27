@@ -2,9 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import CoachLogo from "../../assets/images/svg/coach-logo.svg";
 import CoachIcon from "../../assets/images/svg/coach-icon.svg";
-import LoginLogo from "../../assets/images/svg/wcc-guest.svg";
+import AlertIcon from '../../assets/images/svg/noti.svg';
 import {AiOutlineMenu} from 'react-icons/ai';
-import Loginpage from "../../pages/loginpage/Loginpage";
+
+import Actiondropdown from "./Actiondropdown";
+
 const index = () => {
   return (
     <div className="bg-white drop-shadow-xl shadow-white h-16 mx-md:fixed  top-0 left-0 right-0 z-100">
@@ -17,13 +19,13 @@ const index = () => {
         </div>
         <div className="flex flex-row items-center text-center lg:pt-1 justify-around mx-lg:hidden">
           <Link
-            to="/bus-routes"
+            to="/?partner_code=CUSA"
             className=" p-4 font-semibold text-sm text-slate hover:text-skyblue "
           >
             Bus Routes
           </Link>
           <Link
-            to="/airport-transportation"
+            to="/airport-transportation?partner_code=CUSA"
             className=" p-4 font-semibold text-sm text-slate  hover:text-skyblue"
           >
             Airport transportation
@@ -48,19 +50,22 @@ const index = () => {
           </Link>
         </div>
         <div className="mx-md:pr-4 flex flex-row mx-md:pt-2">
+        <div >
+        <Actiondropdown/>
+        </div>
         <div>
-          <Link to="/login?partner_code=CUSA">
-            <button type="button" className="disabled:cursor-default ">
+          <Link to="/myalert">
+            <button>
               <img
-                alt="loginlogo"
-                src={LoginLogo}
-                className="flex flex-col items-center cursor-pointer lg:pr-20 lg:pt-2 md:pr-4"
-                onClick={<Loginpage/>}
+                alt="Alerticon"
+                src={AlertIcon }
+                className="flex flex-col items-center cursor-pointer lg:h-10.5 lg:pr-20 lg:pt-2 md:pr-4 h-11 pt-2"
+               
               />
             </button>
           </Link>
         </div>
-        <div className=" block md:hidden pl-8 text-skyblue">
+        <div className=" block md:hidden pl-8 text-skyblue mt-2">
           <AiOutlineMenu size={30}/>
         </div>
         </div>

@@ -29,15 +29,16 @@ const DestinationInputBox = () => {
   const styles = useMemo(() => ({
     control: (style, { isDisabled }) => ({
       ...style,
-      minHeight: "4rem",
-      backgroundColor: isDisabled ? " bg-sky-100" : "hsl(0 0% 100%)",
-      borderColor: " bg-sky-100" ,
+      minHeight: "2rem",
+      backgroundColor: isDisabled ? "rgb(224 242 254)" : "hsl(0 0% 100%)",
+      borderColor: " rgb(224 242 254)",
       boxShadow: "none",
       ":hover": {
         ...style[":hover"],
-        backgroundColor: "hsl(0 0% 100%)",
-        borderColor: "hsl(0 0% 100%)",
+        backgroundColor: "rgb(224 242 254)",
+        borderColor: "rgb(224 242 254)",
       },
+      
     }),
     indicatorsContainer: (style) => ({ ...style, display: "none" }),
     placeholder: (style) => ({
@@ -45,28 +46,30 @@ const DestinationInputBox = () => {
       top: "50%",
       marginLeft: 1,
       color: "#666666",
+      paddingTop: 5,
       fontWeight: 500,
-      paddingTop: 30,
       width: 300,
+      
+      
     }),
-    
+
     input: (style) => ({
       ...style,
       paddingBottom: 0,
-      paddingTop: 20,
+      paddingTop: 5,
       paddingLeft: 5,
+      ":active": {
+        ...style[":active"],
+        backgroundColor: "rgb(224 242 254)",
+        borderColor: "rgb(224 242 254)",
+      },
     }),
-    menu: (style) => ({
-      ...style,
-      padding: 4,
-      zIndex: 1000,
-      marginTop: 3,
-      boxShadow: "0 0 8px 3px rgba(0,0,0,0.09)",
-    }),
+    
     option: (style, { isSelected }) => ({
       ...style,
       backgroundColor: isSelected ? "#E9F5FE" : null,
-      borderColor: isSelected ? "#E9F5FE" : null,
+
+      borderColor: "hsl(0 0% 100%)",
       color: "#001F30",
       fontWeight: 500,
       cursor: "pointer",
@@ -74,21 +77,21 @@ const DestinationInputBox = () => {
       ":active": {
         ...style[":active"],
         backgroundColor: isSelected ? "#E9F5FE" : null,
-        borderColor: isSelected ? "#E9F5FE" : null,
+        borderColor: "hsl(0 0% 100%)",
       },
       ":hover": {
         ...style[":hover"],
         backgroundColor: "#F5F5F5",
-        borderColor: "#F5F5F5",
+        borderColor: "hsl(0 0% 100%)",
       },
     }),
- 
   }));
   return (
-    <div className="relative md:mr-4 mb-4 md:mb-0 md:w-[100%] react-select">
+    <div className=" md:w-[97%]  rounded bg-sky100 z-1">
+      <div className="text-lg text-boxblue font-bold pl-2 pt-2 ">Destination</div>
       <Select
-        isDisabled="true"
         placeholder="Type stop name/city or airport name"
+        isDisabled= 'true'
         styles={styles}
         options={options}
         value={locData}

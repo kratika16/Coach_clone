@@ -5,7 +5,7 @@ import College from "../../assets/images/college.jpeg";
 function tours2() {
   return (
     <>
-      <div className="container mx-auto my-10 ">
+      <div className="container mx-auto my-10 px-16">
         <div className="md:flex">
           <div className="w-1/2 md:pr-3 mx-md:w-full">
             <div className="overflow-hidden md:h-[395px] rounded-md -mb-2">
