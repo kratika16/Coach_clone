@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
 import { addCard } from "../../../store/paymentSlice";
 
 const AddCard = () => {
     const dispatch= useDispatch();
+    const navigate= useNavigate();
     const cardList= useSelector((state)=>state.card.value);
    const[firstName, setFirstName]= useState("");
    const[lastName, setLastName]= useState("");
@@ -22,7 +25,7 @@ const AddCard = () => {
    const handleAddCard = (e)=>{
      e.preventDefault();
       const data={
-        id: Math.floor(Math.random()*100),
+        cardid: Math.floor(Math.random()*100),
         firstName: firstName,
         lastName: lastName,
         cardnum: cardnum,
@@ -32,6 +35,7 @@ const AddCard = () => {
       }
       if(data){
         dispatch(addCard(data));
+        navigate('/profile/mypaymentmethods?partner_code=CUSA');
       }
       console.log("data", data);
    }

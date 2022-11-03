@@ -14,9 +14,9 @@ const PaymentPage = () => {
           </div>
           <div className='border-b'/>
           <div className='mt-4'>
-            <button className='disabled:cursor-default font-bold text-base text-white uppercase border rounded-full border-dodger-blue bg-dodger-blue px-14 py-3 '>
+            <a className='disabled:cursor-default font-bold text-base text-white uppercase border rounded-full border-dodger-blue bg-dodger-blue px-14 py-3 ' href='/addcard'>
               ADD CArd
-            </button>
+            </a>
           </div>
         </div>
       </div>

@@ -12,6 +12,7 @@ import MyPayment from "./pages/myaccount/Paymethods/MyPayment";
 
 import AlertSettings from "./pages/myaccount/AlertSettings";
 import MyPastTrips from './pages/myaccount/MyPastTrips';
+import AddCard from "./pages/myaccount/Paymethods/AddCard";
 function App() {
   return (
     <>
@@ -27,9 +28,9 @@ function App() {
         <Route exact path= "/profile/mytickets" element={<MyTrips/>}/>
         <Route exact path="profile/mypasttickets" element={<MyPastTrips/>}/>
         <Route exact path= "/profile/myalerts" element={<AlertPage/>}/>
-        <Route exact path= "/profile/mypaymentmethods" element={<MyPayment/>}/>
-        
+        <Route exact path= "/profile/mypaymentmethods" element={<MyPayment/>}/>   
         <Route exact path= "/profile/settings" element={<AlertSettings/>}/>
+        <Route exact path= "/addcard" element={<AddCard/>}/>
       </Routes> 
       
     </>
