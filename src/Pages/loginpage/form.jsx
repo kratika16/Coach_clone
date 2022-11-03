@@ -46,7 +46,7 @@ useEffect(()=>{
 },[form])
 
   const submitForm=(e)=>{
-    e.preventDefault();
+    
     setError(Validate(form));
     setIsSubmit(true);
     dispatch((login(form)));

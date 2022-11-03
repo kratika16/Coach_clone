@@ -23,7 +23,7 @@ const index = () => {
             Bus Routes
           </Link>
           <Link
-            to="/airport-transportation"
+            to="/airport_page"
             className=" p-4 font-semibold text-sm text-slate  hover:text-skyblue"
           >
             Airport transportation

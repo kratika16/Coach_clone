@@ -99,12 +99,7 @@ const AccountForm = () => {
             placeholder=""
             options={option}
             value={codes}
-            defaultValue= {{
-              "name": "United States",
-              "label": "+1",
-              "value": "+1",
-              "code": "US"
-              }}
+            defaultValue= {"+1"}
             onChange={handleChange}
             styles={styles}
           />

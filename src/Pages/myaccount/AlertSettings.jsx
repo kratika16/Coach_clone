@@ -5,6 +5,16 @@ import Footer from "../../components/footer/index";
 import Select from "react-select";
 import PhoneCodes from "../../assets/data/Phone-codes";
 const AlertSettings = () => {
+  const [toggleShown, setToggleShown] = useState(false);
+  const[smstoggle, setSMSToggle]= useState(false);
+
+  const handleSMSToggle =()=>{
+    setSMSToggle(!smstoggle);
+  }
+
+  const handletoggleShown = () => {
+    setToggleShown(!toggleShown);
+  };
   const option =[
     {
       "name": "United States",
@@ -64,7 +74,7 @@ const AlertSettings = () => {
   return (
     <div>
       <Header />
-      <div className="container mx-auto my-0 lg:my-11 px-16">
+      <div className="container mx-auto my-0 lg:my-11 md:mt-2 mt-20  lg:px-16 px-0">
         <div className="px-4 lg:px-0">
           <a href="/profile/myalerts?partner_code=CUSA">
             <span className="mb-5 text-endeavour font-medium text-sm underline cursor-pointer max-w-max">
@@ -92,11 +102,11 @@ const AlertSettings = () => {
               Booking Reminders
             </h1>
           </div>
-          <div className="flex justify-center text-gray-400 rounded-full">
-            <BsToggle2Off size={40} />
+          <div className="flex justify-center rounded-full">
+          {!toggleShown ? <BsToggle2On onClick={handletoggleShown} className="text-dodger-blue w-10 h-10" />:<BsToggle2Off onClick={handletoggleShown} className="text-gray-400 w-10 h-10"/>}
           </div>
           <div className="flex justify-center text-dodger-blue rounded-full">
-            <BsToggle2On size={40} />
+          {!smstoggle ? <BsToggle2On onClick={handleSMSToggle} className="text-dodger-blue w-10 h-10" />:<BsToggle2Off onClick={handleSMSToggle} className="text-gray-400 w-10 h-10"/>}
           </div>
           <div className="text-center text-xs font-normal text-gray-800">
             Please use unsubscribe button in <br />

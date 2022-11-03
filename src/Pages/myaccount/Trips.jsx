@@ -1,18 +1,26 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 import CurrentTickets from '../../assets/data/CurrentTickets'
-import PastTrips from './PastTrips';
+//import PastTrips from './PastTrips';
+// import { addcurrent } from '../../store/currentTicketsSlice';
 const Trips = () => {
-    
+    const navigate = useNavigate();
+  const handleButton= ()=>{
+   navigate('/profile/mypasttickets?partner_code=CUSA')
+
+//    const {current}= useSelector((state)=>state.current);
+//     console.log("current tickets", current);
+  }
   return (
     <div>
         <div className='grid grid-cols-2 mt-2'>
-           <a className='disabled:cursor-default bg-endeavour text-white text-sm md:font-bold cursor-pointer md:rounded-tl-3xl uppercase px-2 py-4 text-center'
-           href='/profile/mytickets?partner_code=CUSA'>
+           <button className='disabled:cursor-default bg-endeavour text-white text-sm md:font-bold cursor-pointer md:rounded-tl-3xl uppercase px-2 py-4 text-center'>
             Current Tickets
-           </a>
-           <a className='disabled:cursor-default bg-linkwater text-endeavour text-sm md:font-bold cursor-pointer md:rounded-tr-3xl uppercase px-2 py-4 text-center' >
+           </button>
+           <button className='disabled:cursor-default bg-linkwater text-endeavour text-sm md:font-bold cursor-pointer md:rounded-tr-3xl uppercase px-2 py-4 text-center' 
+           onClick={handleButton}>
             Past Tickets
-           </a>
+           </button>
         </div>
         <div className='border-4 border-endeavour border-t-0'>
             {CurrentTickets.map((ticket,index)=>(

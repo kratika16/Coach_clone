@@ -1,10 +1,17 @@
 import React from 'react'
-import PastTickets from '../../assets/data/PastTickets'
+import { useNavigate } from 'react-router-dom';
+import MyTrips from './MyTrips';
+import PastTickets from '../../assets/data/PastTickets';
 const PastTrips = () => {
+    const navigate = useNavigate();
+  const handleButton= ()=>{
+   navigate('/profile/mytickets?partner_code=CUSA')
+  }
   return (
     <div>
         <div className='grid grid-cols-2 mt-2'>
-           <button className='disabled:cursor-default bg-endeavour text-white text-sm md:font-bold cursor-pointer md:rounded-tl-3xl uppercase px-2 py-4 text-center'>
+           <button className='disabled:cursor-default bg-endeavour text-white text-sm md:font-bold cursor-pointer md:rounded-tl-3xl uppercase px-2 py-4 text-center'
+           onClick={handleButton}>
             Current Tickets
            </button>
            <button className='disabled:cursor-default bg-linkwater text-endeavour text-sm md:font-bold cursor-pointer md:rounded-tr-3xl uppercase px-2 py-4 text-center' >

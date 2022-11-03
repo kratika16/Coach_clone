@@ -24,7 +24,7 @@ const AlertSection = () => {
             </div>
           </a>
         </div>
-        <span>You can receive ntifications on routes you travel</span>
+        <span>You can receive notifications on routes you travel</span>
       </div>
       <div className="grid grid-cols-1 gap-4 mt-5">
       {Alerts.map((alert,index)=>(
