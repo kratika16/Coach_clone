@@ -24,12 +24,12 @@ export const paymentSlice = createSlice({
             // state.value = state.value.filter((card)=> card.id !== action.payload.id);
             const id= action.payload;
             console.log(action.payload)
+            console.log(state.card.filter( (data)=>data.id!==id))
             return{
                 ...state,
-                card: _.filter(state.card, (data)=>data.cardid==id? null: state),
+                card: _.filter(state.card, (data)=>data.id!==id),
                 isdataonCard:false
             }
-            
         },
     },
 });

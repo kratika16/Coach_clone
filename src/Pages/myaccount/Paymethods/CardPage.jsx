@@ -1,16 +1,11 @@
-import React from "react";
-import Header from "../../../components/header/index2";
-import Footer from "../../../components/footer/index";
-import AddCard from "./AddCard";
-import PaymentTable from "./PaymentTable";
-import { addCard, deleteCard } from "../../../store/paymentSlice";
-import { useSelector } from "react-redux";
-import PaymentPage from './PaymentPage';
-const MyPayment = () => {
-  
-  const {card}= useSelector((state)=>state.card);
+import React from 'react'
+import Header from '../../../components/header/index2';
+import Footer from '../../../components/footer/index';
+import AddCard from './AddCard';
+const CardPage = () => {
   return (
-    <div className="bg-opacity-30">
+    <div>
+        <div>
       <Header />
       <div className="container mx-auto my-10 min-h-[450px] mx-md:my-16">
         <div className=" flex lg:flex-row flex-col lg:mx-20">
@@ -46,13 +41,14 @@ const MyPayment = () => {
             </div>
           </div>
           <div className="lg:w-2/3 w-full px-4 lg:pl-8 lg:pr-24 mt-8">
-             {card.length>0 ? <PaymentTable/> :<PaymentPage/>}
+             <AddCard/>
           </div>
         </div>
       </div>
       <Footer />
     </div>
-  );
-};
+    </div>
+  )
+}
 
-export default MyPayment;
+export default CardPage

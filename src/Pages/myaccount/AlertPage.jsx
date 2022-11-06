@@ -11,21 +11,21 @@ const AlertPage = () => {
             <div className='lg:w-1/3 w-full px-4 lg:pr-0 lg:pl-24'>
                 <div className='grid grid-cols-1 gap-y-0'>
                <a href='/profile/myaccount?partner_code=CUSA' 
-               className='font-bold text-2xl text-endeavour pb-3 pt-4 uppercase cursor-pointer active:border-b-8  active:border-endeavour focus:border-b-8 focus:border-endeavour border-b border-mystic'>
+               className='font-bold text-2xl text-endeavour pb-3 pt-4 uppercase cursor-pointer  border-b border-mystic'>
                 My Account</a>
 
                 <a href='/profile/mytickets?partner_code=CUSA' 
                 
-               className='font-bold text-2xl text-endeavour pb-3 pt-4 uppercase cursor-pointer active:border-b-8  active:border-endeavour focus:border-b-8 focus:border-endeavour border-b border-mystic'>
+               className='font-bold text-2xl text-endeavour pb-3 pt-4 uppercase cursor-pointer  border-b border-mystic'>
               
                 My Tickets</a>
                 
                 <a href='/profile/mypaymentmethods?partner_code=CUSA' 
-               className='font-bold text-2xl text-endeavour pb-3 pt-4 uppercase cursor-pointer active:border-b-8  active:border-endeavour focus:border-b-8 focus:border-endeavour border-b border-mystic'>
+               className='font-bold text-2xl text-endeavour pb-3 pt-4 uppercase cursor-pointer  border-b border-mystic'>
                 My Payment Methods</a>
 
                 <a href='/profile/myalerts?partner_code=CUSA' 
-               className='font-bold text-2xl text-endeavour pb-3 pt-4 uppercase cursor-pointer active:border-b-8  active:border-endeavour focus:border-b-8 focus:border-endeavour border-b border-mystic'>
+               className='font-bold text-2xl text-endeavour pb-3 pt-4 uppercase cursor-pointer active:border-b-8  active:border-endeavour  border-b-8 border-endeavour'>
                 My Alerts</a>
                 </div>
             </div>

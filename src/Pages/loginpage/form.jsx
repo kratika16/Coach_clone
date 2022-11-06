@@ -77,7 +77,9 @@ useEffect(()=>{
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
   };
-
+  const handleCreateAccount=()=>{
+    navigate("/sign-up")
+  }
   return (
     <div className="flex flex-col  w-full lg:w-96  items-center ">
       <form className="items-center" onSubmit={submitForm}>
@@ -125,7 +127,8 @@ useEffect(()=>{
         </div>
         <hr className="w-full border-ghost my-4"></hr>
         <div className=" rounded-full my-4 text-center border border-denim mt-6">
-          <button className=" uppercase text-lg font-semibold text-center py-4 text-denim ">
+          <button className=" uppercase text-lg font-semibold text-center py-4 text-denim "
+          onClick={handleCreateAccount}>
             Create Account
           </button>
         </div>

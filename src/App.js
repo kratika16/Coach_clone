@@ -8,11 +8,12 @@ import Forgetpassword from "./pages/loginpage/forget/Forgetpassword";
 import Myaccount from "./pages/myaccount/Myaccount";
 import MyTrips from "./pages/myaccount/MyTrips";
 import AlertPage from "./pages/myaccount/AlertPage";
-import MyPayment from "./pages/myaccount/Paymethods/MyPayment";
-
+import MyPayment from "./pages/myaccount/paymethods/MyPayment";
 import AlertSettings from "./pages/myaccount/AlertSettings";
 import MyPastTrips from './pages/myaccount/MyPastTrips';
-import AddCard from "./pages/myaccount/Paymethods/AddCard";
+import AddCardPage from './pages/myaccount/paymethods/CardPage';
+import Signuppage from "./pages/loginpage/signup/Signuppage";
+import SignupConfirmpage from './pages/loginpage/signup/SignupConfirmpage';
 function App() {
   return (
     <>
@@ -28,9 +29,11 @@ function App() {
         <Route exact path= "/profile/mytickets" element={<MyTrips/>}/>
         <Route exact path="profile/mypasttickets" element={<MyPastTrips/>}/>
         <Route exact path= "/profile/myalerts" element={<AlertPage/>}/>
-        <Route exact path= "/profile/mypaymentmethods" element={<MyPayment/>}/>   
+        <Route exact path="/profile/mypaymentmethods" element= {<MyPayment/>}/>
         <Route exact path= "/profile/settings" element={<AlertSettings/>}/>
-        <Route exact path= "/addcard" element={<AddCard/>}/>
+        <Route exact path= "/addcard" element={<AddCardPage/>}/>
+        <Route exact path="/sign-up" element={<Signuppage/>}/>
+        <Route exact path= "/sign-up/confirm" element={<SignupConfirmpage/>}/>
       </Routes> 
       
     </>
