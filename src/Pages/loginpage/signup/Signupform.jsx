@@ -1,17 +1,76 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { BsEye, BsEyeSlash } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Validation } from "../../../hooks/Validation";
+import { handleSignup } from "../../../store/loginSlice";
+
 const Signupform = () => {
-    const navigate= useNavigate();
+
+  const getFormValues = () => {
+    let storedValues = localStorage.getItem("signupuser");
+    if (storedValues) {
+      return JSON.parse(storedValues);
+    } else {
+      return [];
+    }
+  };
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [form, setForm] = useState(getFormValues());
   const [passwordShown, setPasswordShown] = useState(false);
+
+  const [
+    validLength,
+    hasNumber,
+    upperCase,
+    lowerCase,
+    specialChar,
+    requiredLength,
+  ] = Validation({
+    email: form.email,
+    password: form.password,
+    requiredLength: 8,
+  });
+
+  const submitForm = (e) => {
+    e.preventDefault();
+    const data = {
+      email: form.email,
+      password: form.password,
+    };
+    if(data){
+      dispatch(handleSignup(data));
+      alert('User Registered Successfully');
+    }
+  };
+
+  useEffect(() => {
+    localStorage.setItem("signupuser", JSON.stringify(form));
+  }, [form]);
+
+
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
   };
-  const handlecreateButton = ()=>{
-      navigate('/sign-up/confirm')
-  }
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setForm((prevState) => {
+      return {
+        ...prevState,
+        [name]: value,
+      };
+    });
+   
+  };
+    
+  
+
   return (
-    <div className="flex flex-col justify-center items-center  mb-14 mx-4 lg:mt-0 mx-lg:mt-8 mx-md:mt-16 lg:mb-18 lg:mx-0">
+    <div className="flex flex-col justify-center items-center  mx-4 lg:mt-0 mx-lg:mt-8 mx-md:mt-16 lg:mb-18 lg:mx-0">
       <h1 className="font-semibold text-2xl mx-md:text-lg uppercase text-darkgrey">
         Create An Account
       </h1>
@@ -29,7 +88,7 @@ const Signupform = () => {
             className="  block  px-4 pt-6 pb-2  w-full bg-transparent text-base text-gray-900 appearance-none dark:text-white dark:border-gray-600  focus:outline-none  peer "
             placeholder="Enter Email Address"
             name="email"
-            defaultValue=""
+            onChange={handleChange}
             required
           />
         </div>
@@ -43,7 +102,7 @@ const Signupform = () => {
               className="  block  px-4 pt-6 pb-2  w-full bg-transparent text-base text-gray-900 appearance-none dark:text-white dark:border-gray-600  focus:outline-none  peer "
               placeholder="Enter Password"
               name="password"
-              defaultValue=""
+              onChange={handleChange}
               required
             />
             {!passwordShown ? (
@@ -59,6 +118,9 @@ const Signupform = () => {
             )}
           </div>
         </div>
+        {/* <small className="text-white bg-rose-700">
+          {!validLength && "Please Enter Valid Password "}
+        </small> */}
         <p className="text-xs ">
           Passwords must have at least 8 characters, upper and lower case, with
           at least 1 number and 1 special character.
@@ -87,15 +149,20 @@ const Signupform = () => {
             USA.
           </label>
         </div>
-        <button className="cursor-pointer px-2 py-3 text-white uppercase bg-dodger-blue mt-1 w-full focus:outline-none rounded-full"
-        onClick={handlecreateButton}>
-            Create An Account
+        <button
+          className="cursor-pointer px-2 py-3 text-white uppercase bg-dodger-blue mt-1 w-full focus:outline-none rounded-full"
+          onClick={submitForm}
+        >
+          Create An Account
         </button>
         <div className="flex flex-row justify-between items-center bg-gray-100 px-4 py-3 w-full rounded-md mt-1">
-            <div className="font-semibold text-base">Already have an account</div>
-            <button className=" border border-dodger-blue bg-white text-dodger-blue font-semibold rounded-full uppercase px-6 py-1 focus:outline-none">
-                Log in
-            </button>
+          <div className="font-semibold text-base">Already have an account</div>
+          <button
+            className=" border border-dodger-blue bg-white text-dodger-blue font-semibold rounded-full uppercase px-6 py-1 focus:outline-none"
+            onClick={() => navigate("/login")}
+          >
+            Log in
+          </button>
         </div>
       </div>
     </div>

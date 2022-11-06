@@ -1,5 +1,4 @@
-
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { AiFillSetting } from "react-icons/ai";
 import Arrow from "../../assets/images/svg/arrow.svg";
 import Sod from "../../assets/images/svg/sod.svg";
@@ -7,17 +6,16 @@ import Delete from "../../assets/images/svg/deleteNoti.svg";
 import { deleteAlert } from "../../store/alertSlice";
 import { useDispatch, useSelector } from "react-redux";
 import _ from "lodash";
-import DeleteAlert from "../../components/modals/DeleteAlert";
-
+import DeleteAlertPopup from '../../components/modals/DeleteAlertPopup';
 const AlertSection = () => {
   const [showMyModel, setShowMyModel]= useState(false);
-  const handleOnClose=()=> setShowMyModel(false);
+  const handleOnClose =()=> setShowMyModel(false);
   const dispatch = useDispatch();
   const { alert } = useSelector((state) => state.alert);
-
-  const handleRemoveAlert = (id) => {
-    dispatch(deleteAlert(id));
-  };
+  
+  const handleDelete=(id)=>{
+    dispatch(deleteAlert(id))
+  }
 
   return (
     <div>
@@ -36,35 +34,34 @@ const AlertSection = () => {
         <span>You can receive notifications on routes you travel</span>
       </div>
       <div className="grid grid-cols-1 gap-4 mt-5">
-        {
-          _.map(alert, (row, i) => {
-            return (
-              <div key={i}>
-                <div className="flex space-y-3 p-4 bg-white shadow-2xl border rounded-md flex-col">
-                  <div className="flex flex-row justify-between">
-                  
-                    <div className="flex flex-row">
-                      <img alt="arrow" src={Arrow} className="pr-3" />
-                      <img alt="sod" src={Sod} className="pr-3" />
-                      <div className="flex flex-col space-y-1.5">
-                        <h4 className="font-semibold text-sm uppercase">
-                          {row.origin}
-                        </h4>
-                        <h4 className="font-semibold text-sm uppercase">
-                          {row.destination}
-                        </h4>
-                      </div>
+        {_.map(alert, (row, i) => {
+          return (
+            <div key={i}>
+              <div className="flex space-y-3 p-4 bg-white shadow-2xl border rounded-md flex-col">
+                <div className="flex flex-row justify-between">
+                  <div className="flex flex-row">
+                    <img alt="arrow" src={Arrow} className="pr-3" />
+                    <img alt="sod" src={Sod} className="pr-3" />
+                    <div className="flex flex-col space-y-1.5">
+                      <h4 className="font-semibold text-sm uppercase">
+                        {row.origin}
+                      </h4>
+                      <h4 className="font-semibold text-sm uppercase">
+                        {row.destination}
+                      </h4>
                     </div>
-                    <button onClick={()=>showMyModel(true)}>
-                      <img alt="delete" src={Delete} />
-                    </button>
                   </div>
+                  <button onClick={()=>setShowMyModel(true)}>
+                    <img alt="delete" src={Delete}/>
+                  </button>
                 </div>
               </div>
-            )
-          })}
+            </div>
+            //handleDelete(row.alertid)
+          );
+        })}
       </div>
-      <DeleteAlert visible={showMyModel} onClose={handleOnClose} />
+      <DeleteAlertPopup visible={showMyModel} onClose={handleOnClose}/>
     </div>
   );
 };

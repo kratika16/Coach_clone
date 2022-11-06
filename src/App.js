@@ -23,7 +23,7 @@ function App() {
         <Route exact path="/airport_page" element={<AirportTransportation/>}/>
         <Route exact path="/home" element={<Home/>}/>
         <Route exact path="/airport-transportation" element={<AirportHome/>}/>
-        <Route exact path="/login" element={<Loginpage />}/>
+        <Route exact path="/login" element={<Loginpage/>}/>
         <Route exact path= "/forgot-password" element={<Forgetpassword/>}/>
         <Route exact path= "/profile/myaccount" element={<Myaccount/>}/>
         <Route exact path= "/profile/mytickets" element={<MyTrips/>}/>

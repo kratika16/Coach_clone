@@ -1,5 +1,5 @@
 import React from 'react'
-import Form from './form';
+import Form from '../loginpage/form';
 const Loginform = () => {
   return (
     <div className=' flex flex-col lg:items-center'>

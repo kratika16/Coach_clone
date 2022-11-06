@@ -1,5 +1,5 @@
 import React from 'react'
-import Loginform from './Loginform';
+import Loginform from '../loginpage/Loginform';
 import Header from '../../components/header/index';
 import Footer from '../../components/footer/index';
 const Loginpage = () => {

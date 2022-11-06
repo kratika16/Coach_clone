@@ -76,7 +76,7 @@ const AccountForm = () => {
             className=" focus: ring-sky-500 focus:ring-1 block  p-4  w-full bg-transparent text-base text-gray-900 appearance-none dark:text-white dark:border-gray-600  focus:outline-none  peer "
             placeholder=" "
             name="firstname"
-            defaultValue="Kratika"
+            defaultValue="Abhishek"
             required
           />
         </div>
@@ -89,7 +89,7 @@ const AccountForm = () => {
             className=" focus: ring-sky-500 focus:ring-1 block  p-4 w-full bg-transparent text-base text-gray-900 appearance-none dark:text-white dark:border-gray-600  focus:outline-none  peer "
             placeholder=" "
             name="lastname"
-            defaultValue="Yadav"
+            defaultValue="Sharma"
             required
           />
         </div>
@@ -104,7 +104,7 @@ const AccountForm = () => {
             className=" focus: ring-sky-500 focus:ring-1 block  p-4 w-full bg-transparent text-base text-gray-900 appearance-none dark:text-white dark:border-gray-600 bg-gray-200 focus:outline-none  peer "
             placeholder=" "
             name="email"
-            defaultValue="Kratika@gmail.com"
+            defaultValue="abhishek@gmail.com"
             required
             disabled
           />
