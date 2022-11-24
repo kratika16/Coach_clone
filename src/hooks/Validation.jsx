@@ -1,25 +1,37 @@
-import { useState, useEffect } from "react";
+export const useValidation = () => {
+    const isValidEmail = (email) => {
+        console.log('em',email);
+        return email && /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
+    }
+    const isValidPassword = (password) => {
+        return password && /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/.test(password);
+    }
 
-export const Validation = ({ email = "", password = "",requiredLength=8, }) => {
-const [validEmail,setValidEmail]=useState(false);
-const [validLength, setValidLength] = useState(false);
-const [hasNumber, setHasNumber] = useState(false);
-const [upperCase, setUpperCase] = useState(false);
-const [lowerCase, setLowerCase] = useState(false);
-const [specialChar, setSpecialChar] = useState(false);
+const isValidName=(firstName)=>{
+    
+    return firstName &&  firstName.length >= 1;
+}
 
 
+const isValidLastname=(lastName)=>{
+    
+    return lastName &&  lastName.length >= 1;
+}
 
-useEffect(() => {
-    setValidEmail(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email));
-    setValidLength( password == '' ? true : password.length >= requiredLength ? true : false);
-    setUpperCase(password.toLowerCase() !== password);
-    setLowerCase(password.toUpperCase() !== password);
-    setHasNumber(/\d/.test(password));
-    setSpecialChar(/[ `!@#$%^&*()_+\-=\]{};':"\\|,.<>?~]/.test(password));
-      
-    }, [email,password, requiredLength]);
+const isValidZipcode=(zip)=>{
+    
+    return zip &&  zip.length == 5;
+}
+const isValidCardnum=(cardnum)=>{
+    
+    return cardnum && cardnum.length ==16;
+}
 
-    return [validEmail,validLength, hasNumber, upperCase, lowerCase, specialChar];
+const isValidPnumber=(pnumber)=>{
+    
+    return pnumber && pnumber.length ==10 ;
+}
+    return {isValidEmail, isValidPassword,isValidName,isValidLastname,isValidZipcode,isValidCardnum,isValidPnumber}
+}
 
-};
+

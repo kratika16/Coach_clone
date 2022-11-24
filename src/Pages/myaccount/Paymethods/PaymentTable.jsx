@@ -3,8 +3,8 @@ import React from 'react'
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import Delete from '../../../assets/images/svg/deleteNoti.svg';
-import DeleteCardpopus from '../../../components/modals/DeleteCardpopus';
-import { deleteCard } from '../../../store/paymentSlice'
+import DeleteCardpopus from '../../../Components/modals/DeleteCardpopus';
+import { deleteCard } from '../../../Store/paymentSlice'
 const PaymentTable = () => {
     
     const [showMyModel, setShowMyModel]= useState(false);
@@ -18,8 +18,9 @@ const PaymentTable = () => {
     const handleDelete = (id)=>{
         setDeleteID(id);
         setShowMyModel(true)
-        console.log(deleteID)
+        
     }
+    console.log(deleteID)
     const handleDeleteItem= ()=>{
         return(
             console.log(deleteID),
@@ -60,6 +61,7 @@ const PaymentTable = () => {
                                 <img alt='delete'  src={Delete}/>
                             </button>
                         </td>
+                        
                         
                     </tr>  
                 )

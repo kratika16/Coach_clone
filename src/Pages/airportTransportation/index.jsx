@@ -1,10 +1,10 @@
 import React from "react";
 import ShuttleServe from "./shuttleServe";
 import Booking from "./booking";
-import Header from  '../../components/header/index2';
-import Footer from '../../components/footer/index';
+import Header from  '../../Components/Header/index2';
+import Footer from '../../Components/footer/index';
 import ShuttleBuses from'./shuttleBuses';
-import Queries from "../../components/Queries";
+import Queries from "../../Components/Queries";
 
 function index() {
   return (

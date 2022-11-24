@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from '../../components/header/index2';
+import Header from '../../Components/Header/index2';
 import BookingSection from './BookingSection';
 //import Footer from '../../components/footer/index';
 import AirportTransport from './AirportTransport';

@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import _ from 'lodash';
-import { addpast } from "../../store/pastTicketsSlice";
+import { addpast } from "../../Store/pastTicketsSlice";
 const PastTrips = () => {
   const navigate = useNavigate();
   const handleButton = () => {

@@ -50,6 +50,7 @@ module.exports = {
         linkwater: 'rgb(204 223 238)',
         ecstacy: 'rgb(247 127 39)',
         crimson: 'rgb(237 28 46)',
+        grey: 'rgb(249 249 249)',
       },
       width: {
         88: '88%',

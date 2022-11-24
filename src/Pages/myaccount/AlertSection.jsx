@@ -3,19 +3,30 @@ import { AiFillSetting } from "react-icons/ai";
 import Arrow from "../../assets/images/svg/arrow.svg";
 import Sod from "../../assets/images/svg/sod.svg";
 import Delete from "../../assets/images/svg/deleteNoti.svg";
-import { deleteAlert } from "../../store/alertSlice";
+import { deleteAlert } from "../../Store/alertSlice";
 import { useDispatch, useSelector } from "react-redux";
 import _ from "lodash";
-import DeleteAlertPopup from '../../components/modals/DeleteAlertPopup';
+import DeleteAlertPopup from '../../Components/modals/DeleteAlertPopup';
+import { Link } from "react-router-dom";
 const AlertSection = () => {
   const [showMyModel, setShowMyModel]= useState(false);
   const handleOnClose =()=> setShowMyModel(false);
   const dispatch = useDispatch();
   const { alert } = useSelector((state) => state.alert);
-  
+  const [deleteID, setDeleteID]= useState();
+
   const handleDelete=(id)=>{
-    dispatch(deleteAlert(id))
+    setDeleteID(id);
+    setShowMyModel(true)
   }
+  console.log(deleteID);
+  const handleDeleteItem= ()=>{
+    return(
+        console.log(deleteID),
+        dispatch(deleteAlert(deleteID)),
+        setShowMyModel(false)
+    )
+}
 
   return (
     <div>
@@ -24,12 +35,12 @@ const AlertSection = () => {
           <h1 className="text-endeavour text-2xl lg:text-3xl font-medium uppercase">
             MY Alerts
           </h1>
-          <a href="/profile/settings?partner_code=CUSA">
+          <Link to="/profile/settings?partner_code=CUSA">
             <div className="flex items-center text-dodger-blue space-x-2 cursor-pointer">
               <AiFillSetting className="h-5 w-5" />
               <span>My Alert Settings</span>
             </div>
-          </a>
+          </Link>
         </div>
         <span>You can receive notifications on routes you travel</span>
       </div>
@@ -51,7 +62,7 @@ const AlertSection = () => {
                       </h4>
                     </div>
                   </div>
-                  <button onClick={()=>setShowMyModel(true)}>
+                  <button onClick={()=>handleDelete(row.alertid)}>
                     <img alt="delete" src={Delete}/>
                   </button>
                 </div>
@@ -61,7 +72,7 @@ const AlertSection = () => {
           );
         })}
       </div>
-      <DeleteAlertPopup visible={showMyModel} onClose={handleOnClose}/>
+      <DeleteAlertPopup visible={showMyModel} onClose={handleOnClose} onDelete={handleDeleteItem} id={deleteID}/>
     </div>
   );
 };

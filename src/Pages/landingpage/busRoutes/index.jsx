@@ -1,12 +1,12 @@
 import React from 'react'
-import Header from '../../../components/header/index';
+import Header from '../../../Components/Header/index';
 import BookingSection from './Booking';
 //import Footer from '../../components/footer/index';
-import AirportTransport from '../../busRoutes/AirportTransport';
-import Tours1 from '../../busRoutes/Tours1';
-import Tours2 from '../../busRoutes/Tours2';
-import Footer from '../../../components/footer/index'
-import Queries from '../../../components/Queries';
+import AirportTransport from '../../BusRoutes/AirportTransport';
+import Tours1 from '../../BusRoutes/Tours1';
+import Tours2 from '../../BusRoutes/Tours2';
+import Footer from '../../../Components/footer/index'
+import Queries from '../../../Components/Queries';
 const Index = () => {
   return (
     <div>

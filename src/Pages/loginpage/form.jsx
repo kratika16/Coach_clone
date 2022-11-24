@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { BsEye, BsEyeSlash } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import {  useNavigate } from "react-router-dom";
-import {Validation} from '../../hooks/Validation'
+import {useValidation} from '../../hooks/Validation'
 
 import _ from "lodash";
-import { handleLogin } from "../../store/loginSlice";
+import { handleLogin } from "../../Store/loginSlice";
 
 const Form = () => {
   const dispatch = useDispatch();
@@ -15,40 +15,48 @@ const Form = () => {
     email: "",
     password: "",
   });
-
-  const [loading, setLoading] = useState(false);
+  
   const [passwordShown, setPasswordShown] = useState(false);
+  const [agree,setAgree]=useState(false);
+  const [errors, setErrors] = useState({});
 
-  const [
-    validEmail,
-    validLength,
-    hasNumber,
-    upperCase,
-    lowerCase,
-    specialChar,
-    requiredLength,
-  ] = Validation({
-    email: form.email,
-    password: form.password,
-    requiredLength: 8,
-  });
+const {isValidEmail, isValidPassword} = useValidation()
+
+const verify = () => {
+  const error = {};
+  let isError = false;
+  const {email, password} = form;
+  if(!isValidEmail(email)) {
+    error['email'] = 'Please enter valid email';
+    isError = true;
+  } 
+  if(!isValidPassword(password)) {
+    error['password'] = 'Please enter valid password';
+    isError = true;
+  }
+  setErrors(error);
+  return isError;
+}
+ 
+
 
   const { isAuthenticated } = useSelector((state) => state.user);
   console.log("user", isAuthenticated);
 
   const submitForm = (e) => {
     e.preventDefault();
-    const data = {
-      email: form.email,
-      password: form.password,
-    };
+    if(!verify()){
+      const {email, password} = form;
+    dispatch(handleLogin({email,password}));
+    }
+  };
 
-    setLoading(true);
-    dispatch(handleLogin(data));
+  const togglePassword = () => {
+    setPasswordShown(!passwordShown);
   };
 
   useEffect(() => {
-    if (isAuthenticated === true) {
+    if (isAuthenticated) {
       navigate("/home");
     }
   }, [isAuthenticated]);
@@ -63,9 +71,7 @@ const Form = () => {
     });
   };
 
-  const togglePassword = () => {
-    setPasswordShown(!passwordShown);
-  };
+  
 
   const handleCreateAccount = () => {
     navigate("/sign-up");
@@ -85,9 +91,8 @@ const Form = () => {
             value={form.email}
           />
         </div>
-        {/* <small className="text-white bg-rose-700">
-          {validEmail?'': "Please Enter Valid Email"}
-        </small> */}
+        <p className="bg-rose-100 text-red">{errors['email']}</p>
+
         <div className="border  rounded-lg bg-white mt-4  p-2">
           <p className="text-denim text-xs">Password*</p>
           <input
@@ -110,13 +115,12 @@ const Form = () => {
             />
           )}
         </div>
-        <small className="text-white bg-rose-700">
-          {!validLength && "Please Enter Valid Password "}
-        </small>
+        
         <div className="text-gray-700   text-xs mt-1">
           Passwords must have at least 8 characters, upper and lower case, with
           at least 1 number and 1 special character.
         </div>
+        <p className="bg-rose-100 text-red">{errors['password']}</p>
         <div className=" bg-gray-400 rounded-full my-4 text-center">
           <button
             className="text-lg font-semibold text-center py-4  text-white "

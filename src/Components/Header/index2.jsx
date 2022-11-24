@@ -1,13 +1,15 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React,{useEffect} from "react";
+import { Link, useNavigate } from "react-router-dom";
 import CoachLogo from "../../assets/images/svg/coach-logo.svg";
 import CoachIcon from "../../assets/images/svg/coach-icon.svg";
 import AlertIcon from '../../assets/images/svg/noti.svg';
 import {AiOutlineMenu} from 'react-icons/ai';
+import { useSelector } from "react-redux";
 
 import Actiondropdown from "./Actiondropdown";
 
-const index = () => {
+const Index = () => {
+
   return (
     <div className="bg-white drop-shadow-xl shadow-white h-16 mx-md:fixed  top-0 left-0 right-0 z-100">
       <div className="flex items-center justify-between mx-lg:pt-2 ">
@@ -74,4 +76,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

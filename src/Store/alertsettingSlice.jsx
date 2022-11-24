@@ -6,8 +6,8 @@ export const alertsettingSlice= createSlice({
     initialState:{
         setting: [{
             "setid": "0",
-            "pnum": "198-647-9152",
-            "codes": "+1",
+            "pnum": "1986479152",
+            "pcode": "+1",
         },],
         iseditable: false
     },
@@ -30,13 +30,15 @@ export const alertsettingSlice= createSlice({
             }
         },
         editSetting: (state,action)=>{
-            console.log(action.payload);
+            console.log(action.payload.setid);
+            console.log(action.payload)
             const updateid= _.get(action.payload, "setid");
             console.log(updateid)
+
             const updateddata= _.map(state.setting, (abc)=>{
-                if(abc.setid=== _.toNumber(updateid)){
-                    return{...abc,...action.payload};
-                }
+                if(abc.setid === _.toNumber(updateid)){
+                    return{...abc, ...action.payload};
+                } 
                 return abc;
             });
 
@@ -46,6 +48,7 @@ export const alertsettingSlice= createSlice({
                 setting:updateddata,
                 iseditable:true
             };
+            
         },
     },
 });

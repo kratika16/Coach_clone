@@ -4,7 +4,7 @@ import CoachLogo from "../../assets/images/svg/coach-logo.svg";
 import CoachIcon from "../../assets/images/svg/coach-icon.svg";
 import LoginLogo from "../../assets/images/svg/wcc-guest.svg";
 import {AiOutlineMenu} from 'react-icons/ai';
-import Loginpage from "../../pages/loginpage/Loginpage";
+import Loginpage from "../../Pages/loginpage/Loginpage";
 const index = () => {
   return (
     <div className="bg-white drop-shadow-xl shadow-white h-16 mx-md:fixed  top-0 left-0 right-0 z-100">

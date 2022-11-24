@@ -1,7 +1,18 @@
+import _ from 'lodash';
 import React from 'react'
 import {AiOutlineClose} from 'react-icons/ai';
+import { useSelector } from 'react-redux';
 import Delete from '../../assets/images/svg/delete.svg';
-const DeleteAlert = ({visible, onClose}) => {
+const DeleteAlert = ({visible, onClose, onDelete, id}) => {
+    const {alert}= useSelector((state)=>state.alert);
+    console.log(alert);
+    console.log(id);
+    const abc=_.filter(alert, (o)=>o.alertid===id);
+    console.log(abc);
+    const handleorigin = _.map(abc, "origin");
+    console.log(handleorigin);
+    const handledestination= _.map(abc,"destination");
+    console.log(handledestination);
     if(!visible) return null;
   return (
     <div className='fixed inset-0 bg-black bg-opacity-30 backdrop-blur-xs flex justify-center items-center'>
@@ -17,13 +28,13 @@ const DeleteAlert = ({visible, onClose}) => {
                 <span>Destination</span>
             </div>
             <div className='flex items-start uppercase justify-center col-span-3 lg:col-span-4 text-sm font-semibold space-y-2 flex-col'>
-                <span>Newark Liberty International Airport, NJ</span>
-                <span>New York, NY</span>
+                <span>{handleorigin}</span>
+                <span>{handledestination}</span>
             </div>
         </div>
         <div className='flex space-x-7 mt-4 lg:mt-12 flex-row'>
             <button className='bg-dodger-blue border border-dodger-blue rounded-full text-white py-3 font-semibold uppercase w-[140px] lg:w-[198px]'
-            >
+            onClick={onDelete}>
                 Delete
             </button>
             <button className='text-dodger-blue border border-dodger-blue rounded-full py-3 font-semibold uppercase w-[140px] lg:w-[198px]'

@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import _ from 'lodash'
-import { addcurrent } from "../../store/currentTicketsSlice";
+import { addcurrent } from "../../Store/currentTicketsSlice";
 const Trips = () => {
   const navigate = useNavigate();
   const handleButton = () => {

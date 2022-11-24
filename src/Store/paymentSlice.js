@@ -5,7 +5,7 @@ import _ from "lodash";
 export const paymentSlice = createSlice({
     name: "card",
     initialState: {
-        card: [],
+        card:[],
         isdataonCard: false
     },
     reducers:{
@@ -15,7 +15,7 @@ export const paymentSlice = createSlice({
             return{
                 ...state,
                 card: [...state.card,...[action.payload]],
-                isdataonCard: true
+                isdataonCard: true,
             }
             
         },

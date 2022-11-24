@@ -1,25 +1,21 @@
 import React, { useState } from "react";
-import { BsToggle2Off, BsToggle2On } from "react-icons/bs";
-import Header from "../../Components/Header/index2";
-import Footer from "../../Components/footer/index";
 import AlertTogglePopus from "../../Components/modals/AlertTogglePopus";
-import Display from "../../Components/alertSettingSection/Display";
-import Create from "../../Components/alertSettingSection/Create";
-import { useSelector } from "react-redux";
+import Header from "../../Components/Header/index2";
+import { BsToggle2Off, BsToggle2On } from "react-icons/bs";
+import Footer from '../../Components/footer/index';
+import Update from "./Update";
 import { Link } from "react-router-dom";
-const AlertSettings = () => {
+const Section = () => {
   const [showMyModel, setShowMyModel] = useState(false);
   const handleonClose = () => setShowMyModel(false);
   const [toggleShown, setToggleShown] = useState(true);
   const [smstoggle, setSMSToggle] = useState(true);
-  // const handleSMSToggle = () => {
-  //   setShowMyModel(true);
-  // };
+  const handleSMSToggle = () => {
+    setShowMyModel(true);
+  };
   const handletoggleShown = () => {
     setShowMyModel(true);
   };
-  const {setting}= useSelector((state)=>state.setting);
-
   return (
     <div>
       <Header />
@@ -92,12 +88,13 @@ const AlertSettings = () => {
             </div>
           </div>
         </div>
-        {setting.length>0 ? <Display/>:<Create/>}
+      <Update/>  
       </div>
+      
       <Footer />
       <AlertTogglePopus visible={showMyModel} onClose={handleonClose} />
     </div>
   );
 };
 
-export default AlertSettings;
+export default Section;

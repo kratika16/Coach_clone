@@ -2,55 +2,59 @@ import React, { useState,useEffect } from "react";
 import { BsEye, BsEyeSlash } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Validation } from "../../../hooks/Validation";
-import { handleSignup } from "../../../store/loginSlice";
+import { useValidation } from "../../../hooks/Validation";
+import { handleSignup } from "../../../Store/loginSlice";
 
 const Signupform = () => {
-
-  const getFormValues = () => {
-    let storedValues = localStorage.getItem("signupuser");
-    if (storedValues) {
-      return JSON.parse(storedValues);
-    } else {
-      return [];
-    }
-  };
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [form, setForm] = useState(getFormValues());
-  const [passwordShown, setPasswordShown] = useState(false);
-
-  const [
-    validLength,
-    hasNumber,
-    upperCase,
-    lowerCase,
-    specialChar,
-    requiredLength,
-  ] = Validation({
-    email: form.email,
-    password: form.password,
-    requiredLength: 8,
+  const [form, setForm] = useState({
+    email: '',
+    password: ''
   });
+  const [passwordShown, setPasswordShown] = useState(false);
+  const [agree,setAgree]=useState(false);
+  const [errors, setErrors] = useState({});
+
+const {isValidEmail, isValidPassword} = useValidation()
+
+  const verify = () => {
+    const error = {};
+    let isError = false;
+    const {email, password} = form;
+    if(!isValidEmail(email)) {
+      error['email'] = 'Please enter valid email';
+      isError = true;
+    } 
+    if(!isValidPassword(password)) {
+      error['password'] = 'Please enter valid password';
+      isError = true;
+    }
+    setErrors(error);
+    console.log(error, isError)
+    return isError;
+  }
 
   const submitForm = (e) => {
     e.preventDefault();
-    const data = {
-      email: form.email,
-      password: form.password,
-    };
-    if(data){
-      dispatch(handleSignup(data));
-      alert('User Registered Successfully');
+    if(!verify()) {
+      const {email, password} = form;
+      dispatch(handleSignup({email, password}));
+     
     }
   };
 
-  useEffect(() => {
-    localStorage.setItem("signupuser", JSON.stringify(form));
-  }, [form]);
+  
+  // const { isAuthenticated } = useSelector((state) => state.user);
+  // console.log("user", isAuthenticated);
 
+  // useEffect(() => {
+  //   if (isAuthenticated) {
+  //     navigate("/profile/myaccount");
+  //   }
+  // }, [isAuthenticated]);
 
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
@@ -66,8 +70,7 @@ const Signupform = () => {
     });
    
   };
-    
-  
+
 
   return (
     <div className="flex flex-col justify-center items-center  mx-4 lg:mt-0 mx-lg:mt-8 mx-md:mt-16 lg:mb-18 lg:mx-0">
@@ -92,6 +95,7 @@ const Signupform = () => {
             required
           />
         </div>
+        <p className="bg-rose-100 text-red">{errors['email']}</p>
         <div className="relative border border-ghost rounded ">
           <label class="absolute text-xs  text-blue-500 dark:text-gray-400 px-4 pt-1 pb-4 ">
             Password*
@@ -118,17 +122,17 @@ const Signupform = () => {
             )}
           </div>
         </div>
-        {/* <small className="text-white bg-rose-700">
-          {!validLength && "Please Enter Valid Password "}
-        </small> */}
+        <p className="bg-rose-100 text-red">{errors['password']}</p>
         <p className="text-xs ">
           Passwords must have at least 8 characters, upper and lower case, with
           at least 1 number and 1 special character.
         </p>
         <div class="flex items-center ">
           <input
+          id='checker'
             type="checkbox"
-            value=""
+            checked={agree}
+            onChange={() => setAgree((prev) => !prev)}
             className="w-4 h-4 text-blue-600 bg-white  checked:bg-blue-500 border border-blue-500 rounded "
           />
           <label class="ml-2 text-xs font-normal text-gray-900">
@@ -152,6 +156,7 @@ const Signupform = () => {
         <button
           className="cursor-pointer px-2 py-3 text-white uppercase bg-dodger-blue mt-1 w-full focus:outline-none rounded-full"
           onClick={submitForm}
+          id='register'
         >
           Create An Account
         </button>
@@ -159,7 +164,7 @@ const Signupform = () => {
           <div className="font-semibold text-base">Already have an account</div>
           <button
             className=" border border-dodger-blue bg-white text-dodger-blue font-semibold rounded-full uppercase px-6 py-1 focus:outline-none"
-            onClick={() => navigate("/login")}
+            onClick={()=> navigate("/login")}
           >
             Log in
           </button>

@@ -5,6 +5,7 @@ import currentTicketsSlice from './currentTicketsSlice';
 import AuthSlice  from './loginSlice';
 import pastTicketsSlice from './pastTicketsSlice';
 import paymentSlice from './paymentSlice';
+
 const rootReducer = combineReducers({
   user: AuthSlice,
   card: paymentSlice,

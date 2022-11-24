@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import Wallet from '../../../assets/images/svg/wallet.svg';
 const PaymentPage = () => {
   return (
@@ -14,9 +15,9 @@ const PaymentPage = () => {
           </div>
           <div className='border-b'/>
           <div className='mt-4'>
-            <a className='disabled:cursor-default font-bold text-base text-white uppercase border rounded-full border-dodger-blue bg-dodger-blue px-14 py-3 ' href='/addcard'>
+            <Link className='disabled:cursor-default font-bold text-base text-white uppercase border rounded-full border-dodger-blue bg-dodger-blue px-14 py-3 ' to='/addcard'>
               ADD CArd
-            </a>
+            </Link>
           </div>
         </div>
       </div>

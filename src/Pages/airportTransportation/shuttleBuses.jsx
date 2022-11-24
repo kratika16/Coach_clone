@@ -1,8 +1,8 @@
 import React from "react";
-import ShuttlePart1 from "../../components/shuttleBusesPart/ShuttlePart1";
-import ShuttlePart2 from "../../components/shuttleBusesPart/ShuttlePart2";
-import ShuttlePart3 from "../../components/shuttleBusesPart/ShuttlePart3";
-import ShuttlePart4 from "../../components/shuttleBusesPart/ShuttlePart4";
+import ShuttlePart1 from "../../Components/shuttleBusesPart/ShuttlePart1";
+import ShuttlePart2 from "../../Components/shuttleBusesPart/ShuttlePart2";
+import ShuttlePart3 from "../../Components/shuttleBusesPart/ShuttlePart3";
+import ShuttlePart4 from "../../Components/shuttleBusesPart/ShuttlePart4";
 
 const shuttleprat = () => {
   return (

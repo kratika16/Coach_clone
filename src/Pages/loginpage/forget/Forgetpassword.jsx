@@ -1,7 +1,7 @@
 import React from 'react'
 import Forgetform from './forgetfrom';
-import Header from '../../../components/header/index';
-import Footer from '../../../components/footer/index';
+import Header from '../../../Components/Header/index';
+import Footer from '../../../Components/footer/index';
 const Forgetpassword = () => {
   return (
     <>

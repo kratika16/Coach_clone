@@ -1,12 +1,22 @@
-import { Fragment } from "react";
+import { Fragment,useEffect} from "react";
 import { Menu, Transition } from "@headlessui/react";
 import AccountIcon from "../../assets/images/svg/wcc-login.svg";
+import { handleLogout } from "../../Store/loginSlice";
+import { useDispatch,useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
+
 export default function Example() {
+  const dispatch=useDispatch();
+  const navigate=useNavigate();
+
+  const { isAuthenticated } = useSelector((state) => state.user);
+  console.log("user", isAuthenticated);
+
   return (
     <Menu as="div" className="relative">
       <div>
@@ -42,7 +52,8 @@ export default function Example() {
             <Menu.Item>
               {({ active }) => (
                 <a
-                  href="/"
+                  // 
+                  onClick={()=>dispatch(handleLogout(navigate('/')))}
                   className={classNames(
                     active ? "bg-gray-100 text-gray-900" : "text-gray-700",
                     "block px-4 py-2 text-sm font-semibold mb-2"

@@ -1,6 +1,6 @@
 import React from "react";
-import Bookingcard from "../../components/bookingsection/bookingcards/Bookingcard";
-import BusBooking from "../../components/bookingsection/BusBooking";
+import Bookingcard from "../../Components/bookingsection/bookingcards/Bookingcard";
+import BusBooking from "../../Components/bookingsection/BusBooking";
 
 const Booking = () => {
   return (
