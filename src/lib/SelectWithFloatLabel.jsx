@@ -37,7 +37,7 @@ const SelectWithFloatLabel = memo(
               paddingTop:
                 (state.hasValue || !isEmpty(state.selectProps.inputValue)) &&
                 16,
-              zIndex: 1,
+              
               ":focus-within": {
                 ...style[":focus-within"],
                 paddingTop: 16,
@@ -45,11 +45,19 @@ const SelectWithFloatLabel = memo(
             };
             return isFunction(ctrl) ? ctrl(ds, state) : ds;
           },
+          singleValue: (style, state) => {
+            const ds = {
+              ...style,
+              color: '#495057',
+              
+            };
+            return isFunction(sv) ? sv(ds, state) : ds;
+          },
           menu: (style, state) => {
             const ds = {
                 backgroundColor:'#CED4DA',
               ...style,
-              zIndex: 100,
+              zIndex: 90,
             };
             return isFunction(mnu) ? mnu(ds, state) : ds;
           },
@@ -99,7 +107,7 @@ const SelectWithFloatLabel = memo(
           />
           <label
             htmlFor={inputId}
-            className={`absolute text-gray-500 ${labelFontSize} top-0 mt-4 ml-2 duration-300 origin-0 z-10`}
+            className={`absolute text-gray-500 ${labelFontSize} top-0 mt-4 ml-2 duration-300 origin-0 z-9`}
           >
             {labelText}
           </label>

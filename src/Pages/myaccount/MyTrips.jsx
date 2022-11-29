@@ -5,6 +5,7 @@ import Footer from '../../Components/footer/index';
 import { Link } from 'react-router-dom';
 
 const MyTrips = () => {
+  
   return (
     <div>
         <Header/>

@@ -3,7 +3,7 @@ import { BsToggle2Off, BsToggle2On } from "react-icons/bs";
 import Header from "../../Components/Header/index2";
 import Footer from "../../Components/footer/index";
 import AlertTogglePopus from "../../Components/modals/AlertTogglePopus";
-import Display from "../../Components/alertSettingSection/Display";
+import Section from '../../Components/alertSettingSection/section';
 import Create from "../../Components/alertSettingSection/Create";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -92,7 +92,7 @@ const AlertSettings = () => {
             </div>
           </div>
         </div>
-        {setting.length>0 ? <Display/>:<Create/>}
+        {setting.length>0 ? <Section/>:<Create/>}
       </div>
       <Footer />
       <AlertTogglePopus visible={showMyModel} onClose={handleonClose} />

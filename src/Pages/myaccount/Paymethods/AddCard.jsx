@@ -27,11 +27,11 @@ const AddCard = () => {
   const [cardnum, setCardNum] = useState("");
   const [month, setMonth] = useState("");
   const [year, setYear] = useState("");
-  const [pcode, setPcode] = useState("+1");
+  const [pcode, setPcode] = useState(+1);
   const [pnumber, setPnumber] = useState("");
   const [cardtype, setCardType] = useState("");
   const [errors, setErrors] = useState({});
-
+  const [disabled, setDisabled] = useState(true);
   const {
     isValidName,
     isValidLastname,
@@ -140,6 +140,11 @@ const AddCard = () => {
   const handleCardTypeChange = (a)=>{
     setCardType(a);
   }
+
+  const handleCancelClick= (e)=>{
+    e.preventDefault();
+    navigate("/profile/mypaymentmethods?partner_code=CUSA");
+  }
   return (
     <div>
       <div className="flex mb-6 flex-col">
@@ -153,6 +158,7 @@ const AddCard = () => {
           <div className="flex flex-col">
             <div className="relative border border-ghost rounded ">
               <input
+                id="firstname-input"
                 type="text"
                 className=" focus: ring-sky-500 focus:ring-1 block  p-4 w-full bg-transparent text-base text-gray-900 appearance-none dark:text-white dark:border-gray-600  focus:outline-none  peer "
                 placeholder=" "
@@ -160,10 +166,11 @@ const AddCard = () => {
                 value={firstName}
                 onChange={(e) => {
                   setFirstName(e.target.value);
+                  setDisabled(false);
                 }}
               />
 
-              <label className="absolute text-base  text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">
+              <label for="firstname-input" className="absolute text-base  text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">
                 First Name*
               </label>
             </div>
@@ -174,15 +181,16 @@ const AddCard = () => {
           <div className="flex flex-col">
             <div className="relative border border-ghost rounded ">
               <input
+               id="lastname-input"
                 type="text"
                 className=" focus: ring-sky-500 focus:ring-1 block  p-4 w-full bg-transparent text-base text-gray-900 appearance-none dark:text-white dark:border-gray-600  focus:outline-none  peer "
                 placeholder=" "
                 name="lastname"
                 onChange={(e) => {
-                  setLastName(e.target.value);
+                  setLastName(e.target.value); setDisabled(false);
                 }}
               />
-              <label className="absolute text-base  text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">
+              <label for="lastname-input" className="absolute text-base  text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">
                 Last Name*
               </label>
             </div>
@@ -195,34 +203,37 @@ const AddCard = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
           <div className="relative border border-ghost rounded ">
             <input
+             id="address-input"
               type="text"
               className=" focus: ring-sky-500 focus:ring-1 block  p-4 w-full bg-transparent text-base text-gray-900 appearance-none dark:text-white dark:border-gray-600  focus:outline-none  peer "
               placeholder=" "
               onChange={(e) => {
-                setAddress(e.target.value);
+                setAddress(e.target.value); setDisabled(false);
               }}
             />
-            <label className="absolute text-base  text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">
+            <label for="address-input" className="absolute text-base  text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">
               Billing Address*
             </label>
           </div>
 
           <div className="relative border border-ghost rounded ">
             <input
+             id="suite-input"
               type="text"
               className=" focus: ring-sky-500 focus:ring-1 block  p-4 w-full bg-transparent text-base text-gray-900 appearance-none dark:text-white dark:border-gray-600  focus:outline-none  peer "
               placeholder=" "
               onChange={(e) => {
-                setSuite(e.target.value);
+                setSuite(e.target.value); setDisabled(false);
               }}
             />
-            <label className="absolute text-base  text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">
+            <label for="suite-input" className="absolute text-base  text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">
               Suite/Apt (optional)
             </label>
           </div>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
           <SelectWithFloatLabel
+            inputId={"country"}
             labelText={"Country*"}
             options={Countries}
             labelFontSize="text-sm lg:text-base"
@@ -230,11 +241,12 @@ const AddCard = () => {
             value={country}
           />
           <SelectWithFloatLabel
+            inputId= {"state"}
             labelText={"State*"}
             options={StateFilter}
             labelFontSize="text-sm lg:text-base"
             value={state}
-            onChange={handleState}
+            onChange={handleState }
           />
         </div>
 
@@ -242,15 +254,16 @@ const AddCard = () => {
           <div className="flex flex-col">
             <div className="relative border border-ghost rounded ">
               <input
+               id="city-input"
                 type="text"
                 className=" focus: ring-sky-500 focus:ring-1 block  p-4 w-full bg-transparent text-base text-gray-900 appearance-none dark:text-white dark:border-gray-600  focus:outline-none  peer "
                 placeholder=" "
                 name="city"
                 onChange={(e) => {
-                  setCity(e.target.value);
+                  setCity(e.target.value); setDisabled(false);
                 }}
               />
-              <label className="absolute text-base  text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">
+              <label for="city-input" className="absolute text-base  text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">
                 City/Town*
               </label>
             </div>
@@ -259,15 +272,16 @@ const AddCard = () => {
           <div className="flex flex-col">
             <div className="relative border border-ghost rounded ">
               <input
+                id="zip-input"
                 type="text"
                 className=" focus: ring-sky-500 focus:ring-1 block  p-4 w-full bg-transparent text-base text-gray-900 appearance-none dark:text-white dark:border-gray-600  focus:outline-none  peer "
                 placeholder=" "
                 name="zip"
                 onChange={(e) => {
-                  setZip(e.target.value);
+                  setZip(e.target.value); setDisabled(false);
                 }}
               />
-              <label className="absolute text-base  text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">
+              <label for="zip-input" className="absolute text-base  text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">
                 Postal/Zip Code*
               </label>
             </div>
@@ -281,16 +295,16 @@ const AddCard = () => {
           <div className="flex flex-col">
             <div className="relative border border-ghost rounded ">
               <input
+               id="cardnum-input"
                 type="text"
                 className=" focus: ring-sky-500 focus:ring-1 block  p-4 w-full bg-transparent text-base text-gray-900 appearance-none dark:text-white dark:border-gray-600  focus:outline-none  peer "
                 placeholder=" "
                 name="cardnum"
                 onChange={(e) => {
-                  setCardNum(e.target.value);
+                  setCardNum(e.target.value); setDisabled(false);
                 }}
               />
-
-              <label className="absolute text-base  text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">
+              <label for="cardnum-input" className="absolute text-base  text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">
                 Credit Card Number*
               </label>
             </div>
@@ -300,10 +314,11 @@ const AddCard = () => {
           </div>
           <div className="flex flex-col">
           <SelectWithFloatLabel
+                inputId={"cardtype"}
                 labelText={"Card Type"}
                 options={CardTypes}
                 labelFontSize="text-sm lg:text-base"
-                onChange={handleCardTypeChange}
+                onChange={handleCardTypeChange }
                 value={cardtype}
               />
             <span></span>
@@ -315,11 +330,12 @@ const AddCard = () => {
           <div className="flex flex-row">
             <div className="flex flex-col w-[50%]">
               <SelectWithFloatLabel
+                inputId={"month"}
                 labelText={"MM"}
                 options={Months}
                 labelFontSize="text-sm lg:text-base"
                 defaultValue={+1}
-                onChange={handleMonthChange}
+                onChange={handleMonthChange }
                 value={month}
               />
               {/* <span className="bg-rose-100 text-red text-xs mt-3">
@@ -329,10 +345,11 @@ const AddCard = () => {
             <div className="text-xl font-medium p-2">/</div>
             <div className="flex flex-col w-[50%]">
               <SelectWithFloatLabel
+                inputId={"year"}
                 labelText={"YY"}
                 options={YearList}
                 labelFontSize="text-sm lg:text-base"
-                onChange={handleYearChange}
+                onChange={handleYearChange }
                 value={year}
               />
               <span></span>
@@ -342,6 +359,7 @@ const AddCard = () => {
           <div className="flex flex-row gap-2 ">
             <div className="lg:w-[50%] w-[20%]">
               <SelectWithFloatLabel
+                inputId={"phonecode"}
                 labelText={"Phone Code"}
                 options={PhoneCodes}
                 labelFontSize="text-sm lg:text-base"
@@ -353,6 +371,7 @@ const AddCard = () => {
             <div className="flex flex-col lg:w-full w-[80%]">
               <div className="relative border border-ghost rounded">
                 <input
+                  id="pnumber-input"
                   type="text"
                   className=" focus: ring-sky-500 focus:ring-1 block  p-4 w-full bg-transparent text-base text-gray-900 appearance-none dark:text-white dark:border-gray-600  focus:outline-none  peer "
                   placeholder=" "
@@ -360,9 +379,10 @@ const AddCard = () => {
                   maxLength={10}
                   onChange={(e) => {
                     setPnumber(e.target.value);
+                    setDisabled(false);
                   }}
                 />
-                <label class="absolute text-base  text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">
+                <label for="pnumber-input" class="absolute text-base  text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">
                   Phone Number*
                 </label>
               </div>
@@ -375,11 +395,12 @@ const AddCard = () => {
 
         <div className="relative border border-ghost rounded mb-4">
           <input
+            id="name-input"
             type="text"
             className=" focus: ring-sky-500 focus:ring-1 block  p-4 w-full bg-transparent text-base text-gray-900 appearance-none dark:text-white dark:border-gray-600  focus:outline-none  peer "
             placeholder=" "
           />
-          <label className="absolute text-base  text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">
+          <label for="name-input" className="absolute text-base  text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">
             Name(optional)
           </label>
         </div>
@@ -388,10 +409,12 @@ const AddCard = () => {
           <button
             className="mr-4 disabled:cursor-default font-semibold text-white uppercase rounded-full w-full  border-dodger-blue bg-dodger-blue px-14 py-3 disabled:bg-gray-500 disabled:border-gray-500"
             type="submit"
+            disabled={disabled ? true : false}
           >
             Add card
           </button>
-          <button className="ml-4 disabled:cursor-default text-dodger-blue font-semibold text-base uppercase w-full  border rounded-full border-dodger-blue px-14 py-3">
+          <button className="ml-4 disabled:cursor-default text-dodger-blue font-semibold text-base uppercase w-full  border rounded-full border-dodger-blue px-14 py-3"
+          onClick={handleCancelClick} >
             Cancel
           </button>
         </div>

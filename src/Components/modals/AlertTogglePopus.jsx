@@ -6,7 +6,7 @@ import Apple from '../../assets/images/svg/Apple.svg';
 const AlertTogglePopus = ({visible, onClose}) => {
     if(!visible) return null;
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-xs flex justify-center items-center z-99">
+    <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-xs flex justify-center items-center z-98">
        <div className='flex border-0 rounded-2xl shadow-lg bg-white outline-none flex-col '>
         <button className='ml-auto px-4 py-3' onClick={onClose}><AiOutlineClose/></button>
         <div className='flex justify-center items w-full lg:w-[500px] mb-3 lg:mb-0 h-full lg:h-[355px] px-4 lg:px-0 flex-col'>

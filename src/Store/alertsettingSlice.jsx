@@ -5,9 +5,14 @@ export const alertsettingSlice= createSlice({
     name: "setting",
     initialState:{
         setting: [{
-            "setid": "0",
-            "pnum": "1986479152",
-            "pcode": "+1",
+            "setid": 0,
+            "pnumber": "1986479152",
+            "pcode": {
+                name: "United States",
+                label: "+1",
+                value: "+1",
+                code: "US",
+              },
         },],
         iseditable: false
     },
