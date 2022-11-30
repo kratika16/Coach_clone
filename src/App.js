@@ -10,7 +10,6 @@ import MyTrips from "./Pages/myaccount/MyTrips";
 import AlertPage from "./Pages/myaccount/AlertPage";
 import MyPayment from "./Pages/myaccount/Paymethods/MyPayment";
 import AlertSettings from "./Pages/myaccount/AlertSettings";
-import MyPastTrips from './Pages/myaccount/MyPastTrips';
 import CardPage from './Pages/myaccount/Paymethods/CardPage'
 import Signuppage from "./Pages/loginpage/signup/Signuppage";
 import SignupConfirmpage from './Pages/loginpage/signup/SignupConfirmpage';
@@ -39,7 +38,6 @@ function App() {
         <Route exact path= "/forgot-password" element={<Forgetpassword/>}/>
         <Route exact path= "/profile/myaccount" element={<Myaccount/>}/>
         <Route exact path= "/profile/mytickets" element={<MyTrips/>}/>
-        <Route exact path="profile/mypasttickets" element={<MyPastTrips/>}/>
         <Route exact path= "/profile/myalerts" element={<AlertPage/>}/>
         <Route exact path="/profile/mypaymentmethods" element= {<MyPayment/>}/>
         <Route exact path= "/profile/settings" element={<AlertSettings/>}/>

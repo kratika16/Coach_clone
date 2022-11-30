@@ -1,13 +1,11 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import _ from 'lodash';
 import { addpast } from "../../Store/pastTicketsSlice";
-const PastTrips = () => {
+const PastTrips = ({handleCurrentButton}) => {
   const navigate = useNavigate();
-  const handleButton = () => {
-    navigate("/profile/mytickets?partner_code=CUSA");
-  };
+  
 
   const {past} =useSelector((state)=>state.past);
   console.log("past Tickets", past);
@@ -16,7 +14,7 @@ const PastTrips = () => {
       <div className="grid grid-cols-2 mt-2">
         <button
           className="disabled:cursor-default bg-endeavour text-white text-sm md:font-bold cursor-pointer md:rounded-tl-3xl uppercase px-2 py-4 text-center"
-          onClick={handleButton}
+          onClick={handleCurrentButton}
         >
           Current Tickets
         </button>
@@ -34,12 +32,12 @@ const PastTrips = () => {
               </div>
               <div className="flex md:text-right mx-md:space-y-2 space-y-1 flex-col">
                 <span>{row.valid}</span>
-                <a
+                <Link
                   className="text-dodger-blue cursor-pointer mx-md:underline max-w-max md:self-end"
                   href="#"
                 >
                   View Receipt
-                </a>
+                </Link>
                 <button className="disabled:cursor-default text-dodger-blue mx-md:underline max-w-max md:self-end">
                   Buy Again
                 </button>

@@ -8,7 +8,7 @@ const Loginform = () => {
         <p className='text-center items-center text-md font-medium lg:px-48 px-1 mt-6 text-gray-800'>
             Your Coach USA account allows you to easily to
              book and retrieve tickets.</p>
-        <div className='items-center'>
+        <div className='items-center '>
             <Form/>
         </div>
     </div>

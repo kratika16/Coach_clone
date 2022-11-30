@@ -1,11 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Trips from './Trips';
 import Header from '../../Components/Header/index2';
 import Footer from '../../Components/footer/index';
 import { Link } from 'react-router-dom';
+import PastTrips from './PastTrips';
 
 const MyTrips = () => {
-  
+  const [pastshown, setPastShown]= useState(false);
+  const handlePastButton = () => {
+    setPastShown(true);
+  };
+  const handleCurrentButton = ()=>{
+    setPastShown(false);
+  }
   return (
     <div>
         <Header/>
@@ -31,7 +38,7 @@ const MyTrips = () => {
                 </div>
             </div>
             <div className='lg:w-2/3 w-full px-4 lg:pl-8 lg:pr-24 mt-8 '>
-              <Trips/>
+              {pastshown === false ? <Trips handlePastButton={handlePastButton}/>:<PastTrips handleCurrentButton={handleCurrentButton}/>}
             </div>
 
           </div>
